@@ -1,0 +1,16 @@
+#+title:WHOOP sleep analysis
+#+autho: Joel Deerwester
+#+date: 2026-03-08
+
+* Sleep analysis
+This script reads WHOOP export files and produces plots the following:
+- Summary statistics
+- Sleep duration & performance
+- Sleep stages
+- SWS & REM
+- Bedtime & wake consistency
+- Sleep debt trends
+- Sleep efficiency
+- Recovery & HRV
+- Training load impact
+- Weekly averages
