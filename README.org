@@ -1,16 +1,41 @@
-#+title:WHOOP sleep analysis
-#+autho: Joel Deerwester
+#+title: WHOOP sleep analysis
+#+author: Joel Deerwester
 #+date: 2026-03-08
 
 * Sleep analysis
-This script reads WHOOP export files and produces plots the following:
-- Summary statistics
-- Sleep duration & performance
-- Sleep stages
-- SWS & REM
-- Bedtime & wake consistency
-- Sleep debt trends
-- Sleep efficiency
-- Recovery & HRV
-- Training load impact
-- Weekly averages
+Analyzes WHOOP export data to get a picture of how sleep, recovery, and training
+interact over time. The script (~analyze_sleep.py~) reads the CSV files from a
+WHOOP data export, crunches the numbers, and spits out a self-contained HTML
+report (~sleep_report.html~) with embedded charts.
+
+It auto-detects the latest ~my_whoop_data_*~ directory in the ~health/~ folder,
+so after a fresh export you just unzip and re-run.
+
+** Running it
+#+begin_src bash
+cd ~/bme && source .venv/bin/activate
+python health/analyze_sleep.py
+#+end_src
+
+Opens ~health/sleep_report.html~ in your browser to view.
+
+** What's in the report
+- *Summary statistics* — mean, median, min, max, std dev for sleep duration,
+  performance, efficiency, SWS/REM percentages, sleep debt, respiratory rate,
+  recovery, HRV, and resting heart rate
+- *Sleep duration & performance* — nightly asleep hours vs sleep need, with
+  performance % on a second axis and period averages
+- *Sleep stages over time* — stacked area chart of SWS, REM, and light sleep
+  minutes per night
+- *SWS + REM proportions* — per-night bar chart with a target band for SWS
+  (15-25%)
+- *Bedtime & wake consistency* — scatter plot tracking when you went to bed and
+  woke up, with average lines and hourly gridlines
+- *Sleep debt trend* — how sleep debt accumulates and recovers over the period
+- *Sleep efficiency* — time asleep vs time in bed, plotted against an 85% target
+- *Recovery & HRV correlations* — scatter plots with trend lines showing how
+  sleep performance, duration, and SWS relate to next-day recovery and HRV
+- *Training load impact* — day strain and workout duration vs sleep quality, plus
+  a workout days vs rest days comparison
+- *Weekly averages* — smoothed weekly view of sleep hours, performance, recovery,
+  and HRV trends
